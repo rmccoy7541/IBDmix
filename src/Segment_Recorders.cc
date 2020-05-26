@@ -40,11 +40,13 @@ void SiteRecorder::writeHeader(std::ostream &output) const{
 
 void SiteRecorder::initializeSegment(){
     positions.clear();
+    lod_scores.clear();
 }
 
 void SiteRecorder::record(IBD_Node *node){
     if(node->lod > 0) {
         positions.push_back(node->position);
+        lod_scores.push_back(node->lod);
     }
 }
 
@@ -57,7 +59,7 @@ void SiteRecorder::report(std::ostream &output) const{
     }
     output << '\t';
     for(auto ls = lod_scores.begin(); ls != lod_scores.end(); ++ls){
-        if(ls != lod_scores.begin() && ls > 0)
+        if(ls != lod_scores.begin())
             output << ",";
         output << *ls;
     }
