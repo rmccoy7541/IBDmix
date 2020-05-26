@@ -43,8 +43,9 @@ void SiteRecorder::initializeSegment(){
 }
 
 void SiteRecorder::record(IBD_Node *node){
-    if(node->lod > 0)
+    if(node->lod > 0) {
         positions.push_back(node->position);
+    }
 }
 
 void SiteRecorder::report(std::ostream &output) const{
@@ -53,5 +54,11 @@ void SiteRecorder::report(std::ostream &output) const{
         if(pos != positions.begin())
             output << ',';
         output << *pos;
+    }
+    output << '\t';
+    for(auto ls = lod_scores.begin(); ls != lod_scores.end(); ++ls){
+        if(ls != lod_scores.begin() && ls > 0)
+            output << ",";
+        output << *ls;
     }
 }
