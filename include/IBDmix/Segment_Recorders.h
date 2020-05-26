@@ -27,6 +27,7 @@ class CountRecorder : public Recorder{
 class SiteRecorder : public Recorder{
     private:
         std::vector<unsigned long int> positions;
+        std::vector<double> lod_scores;
 
     public:
         void writeHeader(std::ostream &output) const;
