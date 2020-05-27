@@ -35,7 +35,7 @@ void CountRecorder::report(std::ostream &output) const{
 }
 
 void SiteRecorder::writeHeader(std::ostream &output) const{
-    output << "\tSNPs";
+    output << "\tSNPs\tSNP_LODs";
 }
 
 void SiteRecorder::initializeSegment(){
